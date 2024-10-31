@@ -89,20 +89,25 @@ def fruit_fall():  #defines the function
   if falling_index == 0:
     print(fruits[0])
     current_fruit = fruits[0]
-    current_fruit.goto(current_fruit.xcor(), current_fruit.ycor() - 100)
-  elif falling_index == 4:
+    if current_fruit.ycor() > -200:
+      current_fruit.goto(current_fruit.xcor(), current_fruit.ycor() - 10)
+      wn.ontimer(fruit_fall, 100)
+    else:
+      respawn_fruit()
+      
+  elif falling_index == 1:
     print(fruits[1])
     current_fruit = fruits[1]
     current_fruit.goto(current_fruit.xcor(), current_fruit.ycor() - 100)
-  elif falling_index == 8:
+  elif falling_index == 2:
     print(fruits[2])
     current_fruit = fruits[2]
     current_fruit.goto(current_fruit.xcor(), current_fruit.ycor() - 100)
-  elif falling_index == 12:
+  elif falling_index == 3:
     print(fruits[3])
     current_fruit = fruits[3]
     current_fruit.goto(current_fruit.xcor(), current_fruit.ycor() - 100)
-  elif falling_index == 16:
+  elif falling_index == 4:
     print(fruits[4])
     current_fruit = fruits[4]
     current_fruit.goto(current_fruit.xcor(), current_fruit.ycor() - 100)
@@ -129,15 +134,14 @@ def check_keypress(key):
   if key in typeable_letters:
     print("You pressed the correct key!")
     falling_letters.append(key)
-    typeable_letters.remove(key)
-    for i in range(len(fruit_cor)):
-      if i % 4 == 0:
-        if key == fruit_cor[i + 3]:
-          falling_index = i
-          print(falling_index)
-          print(falling_fruits)
-          print(fruit_cor)
-          start_fruit_fall()
+    for i in range (len(fruits)):
+      if key == typeable_letters[i]:
+        falling_index = i
+        print(falling_index)
+        print(falling_letters)
+        start_fruit_fall()
+      else:
+        i += i
 
 
 def respawn_fruit():
@@ -157,6 +161,10 @@ def respawn_fruit():
 
 
 #this is a change
+# Fix all of fruit fall so that the letter falls too for all possible
+#falling fruits
+
+#Update respawn to use the new lists and whatnot so it works
 
 #-----function calls-----
 
