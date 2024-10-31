@@ -82,24 +82,6 @@ def draw_apple():
   wn.update()
 
 
-def draw_appleTwo(fruits):
-  global letter_to_be_typed
-  global index
-  for fruit, image in fruits:
-    fruit.shape(image)
-    fruit.penup()
-    for i in range(len(fruit_cor)):
-      random_x = fruit_cor[i][1]
-      random_y = fruit_cor[i][2]
-    fruit.goto(random_x, random_y)
-    letter_turtle.hideturtle()
-    letter_turtle.penup()
-    letter_turtle.goto(random_x - 10, random_y - 25)
-    letter_turtle.write(typeable_letters[index], font=("Arial", 32, "bold"))
-    index += 1
-    fruit.showturtle()
-
-
 # moves the fruit so that it falls down the screen
 def fruit_fall():  #defines the function
   print("Fruit Fall")
